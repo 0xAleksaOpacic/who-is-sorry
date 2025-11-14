@@ -5,6 +5,13 @@ import polkadotImg from '../assets/images/letters/polkadot.png'
 import injectiveImg from '../assets/images/letters/Injective.png'
 
 function CompleteScreen({ score, totalLetters, onPlayAgain }) {
+  const shareScore = () => {
+    const text = `I scored ${score}/${totalLetters} on Who's Sorry! 🎉 Can you beat my score? 🕵️`
+    const url = encodeURIComponent(import.meta.env.VITE_APP_URL)
+    const tweet = encodeURIComponent(text)
+    window.open(`https://twitter.com/intent/tweet?text=${tweet}&url=${url}`, '_blank')
+  }
+
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 md:p-6 relative overflow-hidden">
       {/* Blurred letter images in background - only 2 on mobile */}
@@ -24,19 +31,30 @@ function CompleteScreen({ score, totalLetters, onPlayAgain }) {
               {score} / {totalLetters}
             </p>
             <p className="text-lg md:text-2xl text-gray-700 font-bold leading-tight px-2">
-              {score === totalLetters ? "Perfect Score! You're a Web3 meme master! 🏆" : 
-               score >= totalLetters * 0.7 ? "Great job! You know your Web3 memes! 🌟" :
+              {score === totalLetters ? "Perfect Score! You're a Web3 master! 🏆" : 
+               score >= totalLetters * 0.7 ? "Great job! You know your Web3! 🌟" :
                score >= totalLetters * 0.5 ? "Not bad! Keep practicing! 💪" :
                "Better luck next time! Give it another try! 🎯"}
             </p>
           </div>
 
-          <button 
-            onClick={onPlayAgain}
-            className="w-full md:w-auto px-8 md:px-12 py-4 md:py-6 bg-orange-500 text-white rounded-full text-2xl md:text-3xl font-black shadow-2xl hover:scale-105 md:hover:scale-110 hover:rotate-1 md:hover:rotate-2 transition-all duration-200 hover:bg-orange-600"
-          >
-            PLAY AGAIN! 🎮
-          </button>
+          {/* Buttons Container */}
+          <div className="flex flex-col items-center gap-4 w-full">
+            <button 
+              onClick={onPlayAgain}
+              className="w-full md:w-auto px-8 md:px-12 py-4 md:py-6 bg-orange-500 text-white rounded-full text-2xl md:text-3xl font-black shadow-2xl hover:scale-105 md:hover:scale-110 hover:rotate-1 md:hover:rotate-2 transition-all duration-200 hover:bg-orange-600"
+            >
+              PLAY AGAIN! 🎮
+            </button>
+
+            {/* Share Score Button - under Play Again */}
+            <button
+              onClick={shareScore}
+              className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full text-lg md:text-xl font-bold hover:bg-gray-200 transition-all duration-200"
+            >
+              Share Score on X 🔗
+            </button>
+          </div>
         </div>
       </div>
 

@@ -8,6 +8,13 @@ import trustWalletImg from '../assets/images/letters/trustWallet.png'
 import phenixImg from '../assets/images/letters/phenix.png'
 
 function HomeScreen({ onStartGame }) {
+  const shareOnTwitter = () => {
+    const text = "Can you guess which Web3 company wrote each apology letter? 🕵️ Play Who's Sorry!"
+    const url = encodeURIComponent(import.meta.env.VITE_APP_URL)
+    const tweet = encodeURIComponent(text)
+    window.open(`https://twitter.com/intent/tweet?text=${tweet}&url=${url}`, '_blank')
+  }
+
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 relative overflow-hidden">
       {/* Blurred letter images in background - only 2 on mobile */}
@@ -34,19 +41,30 @@ function HomeScreen({ onStartGame }) {
           {/* Description */}
           <div className="bg-gray-100/80 backdrop-blur-sm rounded-3xl p-8 mb-8 border-4 border-gray-200">
             <p className="text-xl text-gray-700 font-semibold leading-relaxed">
-              Web3 companies are joining the "We're Sorry" meme trend. 
+              Web3 companies are joining the "We're Sorry" trend. 
               <br />
               Can you guess which company wrote each apology letter?
             </p>
           </div>
 
-          {/* Play Button */}
-          <button 
-            onClick={onStartGame}
-            className="px-12 py-6 bg-orange-500 text-white rounded-full text-3xl font-black shadow-2xl hover:scale-110 hover:rotate-2 transition-all duration-200 hover:bg-orange-600"
-          >
-            START GAME! 🎮
-          </button>
+          {/* Buttons Container */}
+          <div className="flex flex-col items-center gap-4">
+            {/* Play Button */}
+            <button 
+              onClick={onStartGame}
+              className="px-12 py-6 bg-orange-500 text-white rounded-full text-3xl font-black shadow-2xl hover:scale-110 hover:rotate-2 transition-all duration-200 hover:bg-orange-600"
+            >
+              START GAME! 🎮
+            </button>
+
+            {/* Share Button - under Start Game */}
+            <button
+              onClick={shareOnTwitter}
+              className="px-8 py-3 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full text-lg font-bold hover:bg-gray-200 transition-all duration-200"
+            >
+              Share on X 🔗
+            </button>
+          </div>
 
           {/* Footer hint */}
           <p className="mt-8 text-gray-500 text-sm font-medium">

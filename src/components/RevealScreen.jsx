@@ -15,6 +15,7 @@ function RevealScreen({ letter, isCorrect, onNext, currentStep, totalSteps }) {
     width: window.innerWidth,
     height: window.innerHeight,
   })
+  const [isFullScreen, setIsFullScreen] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,6 +27,19 @@ function RevealScreen({ letter, isCorrect, onNext, currentStep, totalSteps }) {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  // Handle ESC key to close full screen
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        setIsFullScreen(false)
+      }
+    }
+    if (isFullScreen) {
+      window.addEventListener('keydown', handleEsc)
+      return () => window.removeEventListener('keydown', handleEsc)
+    }
+  }, [isFullScreen])
   return (
     <div className="min-h-screen bg-white flex items-center justify-center p-6 relative overflow-hidden">
       {/* Confetti celebration for correct answers */}
@@ -72,13 +86,19 @@ function RevealScreen({ letter, isCorrect, onNext, currentStep, totalSteps }) {
 
         {/* Two column layout on desktop */}
         <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
-          {/* Left: Original X Post Image */}
-          <div className="flex-1 bg-gray-50 rounded-3xl p-6 shadow-xl max-h-[70vh] overflow-auto">
+          {/* Left: Original X Post Image - Clickable for full screen */}
+          <div 
+            className="flex-1 bg-gray-50 rounded-3xl p-6 shadow-xl cursor-pointer hover:bg-gray-100 transition-colors group"
+            onClick={() => setIsFullScreen(true)}
+          >
             <img 
               src={letter.revealImage} 
               alt={`${letter.company.name} apology letter`}
-              className="w-full rounded-2xl object-contain max-h-[65vh]"
+              className="w-full rounded-2xl object-contain max-h-[60vh]"
             />
+            <p className="text-center text-sm text-gray-500 mt-3 group-hover:text-gray-700">
+              Click to view full screen 🔍
+            </p>
           </div>
 
           {/* Right: Links and Next Button */}
@@ -113,6 +133,36 @@ function RevealScreen({ letter, isCorrect, onNext, currentStep, totalSteps }) {
           </div>
         </div>
       </div>
+
+      {/* Full Screen Image Modal */}
+      {isFullScreen && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setIsFullScreen(false)}
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setIsFullScreen(false)}
+            className="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full text-2xl font-bold backdrop-blur-sm transition-colors z-10"
+            aria-label="Close full screen"
+          >
+            ✕
+          </button>
+
+          {/* Full Screen Image */}
+          <img 
+            src={letter.revealImage} 
+            alt={`${letter.company.name} apology letter`}
+            className="max-w-full max-h-full object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Instructions */}
+          <p className="absolute bottom-6 text-white/70 text-sm">
+            Press ESC or click outside to close
+          </p>
+        </div>
+      )}
     </div>
   )
 }
