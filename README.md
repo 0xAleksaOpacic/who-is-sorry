@@ -9,7 +9,7 @@ A fun guessing game where you try to identify which Web3 company wrote each apol
 Web3 companies have been posting "apology letters" on X (Twitter). This game tests your knowledge of the Web3 space!
 
 **Your Mission:**
-1. Read a censored apology letter 📝
+1. Read a censored apology letter. 📝
 2. Guess which company wrote it from 3 options 🤔
 3. See if you're right! ✅❌
 4. Learn about cool Web3 projects 🚀
