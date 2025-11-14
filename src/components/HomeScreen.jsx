@@ -6,8 +6,10 @@ import injectiveImg from '../assets/images/letters/Injective.png'
 import aviciImg from '../assets/images/letters/avici.png'
 import trustWalletImg from '../assets/images/letters/trustWallet.png'
 import phenixImg from '../assets/images/letters/phenix.png'
+import { letters } from '../data/letters'
 
 function HomeScreen({ onStartGame }) {
+  const totalCompanies = letters.length
   const shareOnTwitter = () => {
     const text = "Can you guess which Web3 company wrote each apology letter? 🕵️ Play Who's Sorry!"
     const url = encodeURIComponent(import.meta.env.VITE_APP_URL)
@@ -66,10 +68,10 @@ function HomeScreen({ onStartGame }) {
             </button>
           </div>
 
-          {/* Footer hint */}
-          <p className="mt-8 text-gray-500 text-sm font-medium">
-            7 randomized letters • Multiple choice
-          </p>
+            {/* Footer hint */}
+            <p className="mt-8 text-gray-500 text-sm font-medium">
+              7 random letters from {totalCompanies} companies <br className="md:hidden" />• Multiple choice
+            </p>
         </div>
       </div>
 
