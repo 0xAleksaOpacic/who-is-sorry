@@ -73,13 +73,13 @@ function RevealScreen({ letter, isCorrect, onNext, currentStep, totalSteps }) {
       
       <div className="max-w-7xl w-full relative z-10">
         {/* Step Counter */}
-        <p className="text-center text-lg font-bold text-gray-500 mb-3">
+        <p className="text-center text-base md:text-lg font-bold text-gray-500 mb-2 md:mb-3">
           #{currentStep} of {totalSteps}
         </p>
         
         {/* Feedback - compact and on one line */}
-        <div className="text-center mb-8">
-          <h2 className={`text-4xl font-black ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className={`text-2xl md:text-4xl font-black leading-tight ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
             {isCorrect ? '✅ Correct!' : '❌ Wrong!'} It was <span className="text-orange-500">{letter.company.name}</span>
           </h2>
         </div>
@@ -102,34 +102,32 @@ function RevealScreen({ letter, isCorrect, onNext, currentStep, totalSteps }) {
           </div>
 
           {/* Right: Links and Next Button */}
-          <div className="flex flex-col gap-6 lg:w-96 w-full justify-center">
-            {/* Links */}
-            <div className="flex flex-col gap-4">
-              <a
-                href={letter.tweetUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors text-center"
-              >
-                🔗 View on X
-              </a>
-              <a
-                href={letter.projectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors text-center"
-              >
-                🌐 Visit Project
-              </a>
-            </div>
-
-            {/* Next Button */}
+          <div className="flex flex-col gap-4 lg:gap-6 lg:w-96 w-full justify-center">
+            {/* Next Button - First on mobile, last on desktop */}
             <button
               onClick={onNext}
-              className="px-12 py-6 bg-orange-500 text-white rounded-full text-2xl font-black shadow-2xl hover:scale-105 transition-all duration-200 hover:bg-orange-600"
+              className="px-8 md:px-12 py-4 md:py-6 bg-orange-500 text-white rounded-full text-xl md:text-2xl font-black shadow-2xl hover:scale-105 transition-all duration-200 hover:bg-orange-600 order-1 lg:order-3"
             >
               Next Letter →
             </button>
+
+            {/* Links */}
+            <a
+              href={letter.tweetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors text-center order-2 lg:order-1"
+            >
+              🔗 View on X
+            </a>
+            <a
+              href={letter.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors text-center order-3 lg:order-2"
+            >
+              🌐 Visit Project
+            </a>
           </div>
         </div>
       </div>

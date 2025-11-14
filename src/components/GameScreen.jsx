@@ -43,12 +43,12 @@ function GameScreen({ letter, onAnswer, currentStep, totalSteps }) {
       
       <div className="max-w-7xl w-full relative z-10">
         {/* Step Counter */}
-        <p className="text-center text-lg font-bold text-gray-500 mb-3">
+        <p className="text-center text-base md:text-lg font-bold text-gray-500 mb-2 md:mb-3">
           #{currentStep} of {totalSteps}
         </p>
         
         {/* Question - at top */}
-        <h2 className="text-4xl font-black text-gray-900 text-center mb-8">
+        <h2 className="text-2xl md:text-4xl font-black text-gray-900 text-center mb-6 md:mb-8">
           Who wrote this apology? 🕵️
         </h2>
 
@@ -87,17 +87,17 @@ function GameScreen({ letter, onAnswer, currentStep, totalSteps }) {
           {/* Left: Letter Box */}
           <div className="flex-1">
             {/* Letter Box - Typewriter Style */}
-            <div className="bg-amber-50 border-2 border-gray-400 rounded-lg p-10 shadow-2xl relative">
+            <div className="bg-amber-50 border-2 border-gray-400 rounded-lg p-5 md:p-10 shadow-2xl relative">
               {/* Vintage paper effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-amber-100/20 rounded-lg pointer-events-none"></div>
               
               {/* Typewriter text */}
-              <pre className="text-gray-900 text-base font-mono whitespace-pre-wrap leading-7 relative z-10" style={{ letterSpacing: '0.5px' }}>
+              <pre className="text-gray-900 text-sm md:text-base font-mono whitespace-pre-wrap leading-6 md:leading-7 relative z-10" style={{ letterSpacing: '0.5px' }}>
                 {Array.isArray(letter.quizText) ? letter.quizText.join('\n') : letter.quizText}
               </pre>
               
               {/* Subtle corner marks */}
-              <div className="absolute top-4 right-4 text-gray-400 text-xs font-mono">/// AUTHOR UNKNOWN</div>
+              <div className="absolute top-2 md:top-4 right-2 md:right-4 text-gray-400 text-xs font-mono">/// AUTHOR UNKNOWN</div>
             </div>
           </div>
 

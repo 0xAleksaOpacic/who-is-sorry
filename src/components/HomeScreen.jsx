@@ -29,18 +29,18 @@ function HomeScreen({ onStartGame }) {
       <div className="text-center max-w-2xl flex-grow flex items-center justify-center relative z-10">
         <div>
           {/* Title */}
-          <h1 className="text-7xl font-black text-gray-900 mb-4 drop-shadow-sm">
+          <h1 className="text-4xl md:text-7xl font-black text-gray-900 mb-3 md:mb-4 drop-shadow-sm">
             Who's Sorry? 🕵️
           </h1>
           
           {/* Subtitle */}
-          <p className="text-2xl text-gray-700 font-bold mb-8">
+          <p className="text-lg md:text-2xl text-gray-700 font-bold mb-6 md:mb-8">
             The "We're Sorry" Apology Letter Game
           </p>
 
           {/* Description */}
-          <div className="bg-gray-100/80 backdrop-blur-sm rounded-3xl p-8 mb-8 border-4 border-gray-200">
-            <p className="text-xl text-gray-700 font-semibold leading-relaxed">
+          <div className="bg-gray-100/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-5 md:p-8 mb-6 md:mb-8 border-2 md:border-4 border-gray-200">
+            <p className="text-base md:text-xl text-gray-700 font-semibold leading-relaxed">
               Web3 companies are joining the "We're Sorry" trend. 
               <br />
               Can you guess which company wrote each apology letter?
@@ -48,11 +48,11 @@ function HomeScreen({ onStartGame }) {
           </div>
 
           {/* Buttons Container */}
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-3 md:gap-4">
             {/* Play Button */}
             <button 
               onClick={onStartGame}
-              className="px-12 py-6 bg-orange-500 text-white rounded-full text-3xl font-black shadow-2xl hover:scale-110 hover:rotate-2 transition-all duration-200 hover:bg-orange-600"
+              className="px-8 md:px-12 py-4 md:py-6 bg-orange-500 text-white rounded-full text-2xl md:text-3xl font-black shadow-2xl hover:scale-110 hover:rotate-2 transition-all duration-200 hover:bg-orange-600"
             >
               START GAME! 🎮
             </button>
@@ -60,7 +60,7 @@ function HomeScreen({ onStartGame }) {
             {/* Share Button - under Start Game */}
             <button
               onClick={shareOnTwitter}
-              className="px-8 py-3 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full text-lg font-bold hover:bg-gray-200 transition-all duration-200"
+              className="px-6 md:px-8 py-2 md:py-3 bg-gray-100 text-gray-900 border-2 border-gray-300 rounded-full text-base md:text-lg font-bold hover:bg-gray-200 transition-all duration-200"
             >
               Share on X 🔗
             </button>

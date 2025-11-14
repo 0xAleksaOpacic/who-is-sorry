@@ -22,19 +22,19 @@ function CompleteScreen({ score, totalLetters, onPlayAgain }) {
       
       <div className="text-center max-w-2xl w-full flex-grow flex items-center justify-center relative z-10">
         <div className="w-full">
-          <h1 className="text-4xl md:text-7xl font-black text-gray-900 mb-4 md:mb-6">
+          <h1 className="text-3xl md:text-7xl font-black text-gray-900 mb-3 md:mb-6 leading-tight">
             🎉 Congratulations! 🎉
           </h1>
           
-          <div className="bg-orange-100 rounded-2xl md:rounded-3xl p-6 md:p-10 mb-6 md:mb-8 border-2 md:border-4 border-orange-300">
-            <p className="text-5xl md:text-6xl font-black text-orange-600 mb-3 md:mb-4">
+          <div className="bg-orange-100 rounded-2xl md:rounded-3xl p-5 md:p-10 mb-5 md:mb-8 border-2 md:border-4 border-orange-300">
+            <p className="text-4xl md:text-6xl font-black text-orange-600 mb-2 md:mb-4">
               {score} / {totalLetters}
             </p>
-            <p className="text-lg md:text-2xl text-gray-700 font-bold leading-tight px-2">
+            <p className="text-base md:text-2xl text-gray-700 font-bold leading-tight px-2">
               {score === totalLetters ? "Perfect Score! You're a Web3 master! 🏆" : 
                score >= totalLetters * 0.7 ? "Great job! You know your Web3! 🌟" :
                score >= totalLetters * 0.5 ? "Not bad! Keep practicing! 💪" :
-               "Better luck next time! Give it another try! 🎯"}
+               "Better luck next time! 🎯"}
             </p>
           </div>
 
