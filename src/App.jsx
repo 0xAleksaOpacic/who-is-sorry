@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import HomeScreen from './components/HomeScreen'
 import GameScreen from './components/GameScreen'
@@ -15,6 +15,11 @@ function App() {
 
   const currentLetter = selectedLetters[currentLetterIndex]
   const totalLetters = selectedLetters.length || 7 // Default to 7 for display
+
+  // Scroll to top whenever game stage changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [gameStage, currentLetterIndex])
 
   // Function to randomly select 7 letters from all 12
   const selectRandomLetters = () => {
