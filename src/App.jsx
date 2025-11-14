@@ -30,6 +30,13 @@ function App() {
   const handleStartGame = () => {
     const randomLetters = selectRandomLetters()
     setSelectedLetters(randomLetters)
+    
+    // Preload all letter images in the background
+    randomLetters.forEach(letter => {
+      const img = new Image()
+      img.src = letter.revealImage
+    })
+    
     setGameStage('playing')
     setCurrentLetterIndex(0)
     setScore(0)
