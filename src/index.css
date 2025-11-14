@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-15px) rotate(-10deg);
+  }
+  75% {
+    transform: translateX(15px) rotate(10deg);
+  }
+}
